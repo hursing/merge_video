@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/ani_float"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="float"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/swing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="swing"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/scale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="scale"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/flicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="flicker"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/bounce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bounce"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/flyoff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="flyoff"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/rotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rotate"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/flip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="flip"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/open_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Result Video"
+        android:textSize="30sp" />
+
+</LinearLayout>
