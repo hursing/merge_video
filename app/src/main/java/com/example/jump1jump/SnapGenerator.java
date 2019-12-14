@@ -19,7 +19,6 @@ import VideoHandle.OnEditorListener;
 
 public final class SnapGenerator {
 
-
     public interface OnFinishedListener {
         void onFinished(boolean success);
     }
@@ -31,7 +30,6 @@ public final class SnapGenerator {
     public static final int ANIMATION_BOUNCE = 4;
     public static final int ANIMATION_FLYOFF = 5;
     public static final int ANIMATION_ROTATE = 6;
-    public static final int ANIMATION_FLIP = 7;
 
     public static class BitmapInfo {
         Bitmap bitmap;
@@ -61,9 +59,6 @@ public final class SnapGenerator {
                         break;
                     case ANIMATION_ROTATE:
                         frameCount = generateRotateAnimation(tmpPath, bitmapInfo);
-                        break;
-                    case ANIMATION_FLIP:
-                        frameCount = generateFlipAnimation(tmpPath, bitmapInfo);
                         break;
                     case ANIMATION_FLOAT:
                     default:
@@ -224,29 +219,6 @@ public final class SnapGenerator {
             canvas.rotate(360 * i / 60, canvas.getWidth() / 2, canvas.getHeight() / 2);
             canvas.drawBitmap(raw, raw.getWidth() * 10 / 100, raw.getHeight() * 10 / 100, null);
             canvas.restore();
-            if (!saveBitmap(bmp, tmpPath + i + ".png")) {
-                return 0;
-            }
-        }
-        return 60;
-    }
-
-    private static int generateFlipAnimation(String tmpPath, BitmapInfo bitmapInfo) {
-        Bitmap raw = bitmapInfo.bitmap;
-        Camera camera = new Camera();
-        Matrix matrix = new Matrix();
-        for (int i = 0; i < 60; ++i) {
-            Bitmap bmp;
-            if (i == 15 || i == 45) {
-                bmp = Bitmap.createBitmap(raw.getWidth(), raw.getHeight(), raw.getConfig());
-            } else {
-                camera.save();
-                camera.translate(raw.getWidth() / 2, raw.getHeight() / 2, 0);
-                camera.rotateY(360 * i / 60);
-                camera.getMatrix(matrix);
-                bmp = Bitmap.createBitmap(raw, 0, 0, raw.getWidth(), raw.getHeight(), matrix, true);
-                camera.restore();
-            }
             if (!saveBitmap(bmp, tmpPath + i + ".png")) {
                 return 0;
             }

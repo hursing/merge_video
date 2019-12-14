@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     String mTmpPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tmp/";
@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.bounce).setOnClickListener(this);
         findViewById(R.id.flyoff).setOnClickListener(this);
         findViewById(R.id.rotate).setOnClickListener(this);
-        findViewById(R.id.flip).setOnClickListener(this);
     }
 
     @Override
@@ -64,20 +63,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.rotate:
                 bitmapInfo.animationType = SnapGenerator.ANIMATION_ROTATE;
                 break;
-            case R.id.flip:
-                bitmapInfo.animationType = SnapGenerator.ANIMATION_FLIP;
-                break;
             default:
                 break;
         }
         Toast.makeText(MainActivity.this, "start " + bitmapInfo.animationType, Toast.LENGTH_SHORT).show();
 
         try {
-            FileInputStream fis = new FileInputStream(mTmpPath + "fairy.png");
-            Bitmap bitmap  = BitmapFactory.decodeStream(fis);
-            fis.close();
-            bitmapInfo.bitmap = bitmap;
-            SnapGenerator.generate(mTmpPath + "bg.mp4", bitmapInfo, new SnapGenerator.OnFinishedListener() {
+            bitmapInfo.bitmap = Utility.getAssetBitmap(MainActivity.this,"owl.png");
+            final String fileName = "cavy.mp4";
+            final String srcVideoPath = MainActivity.this.getCacheDir() + fileName;
+            Utility.copyAssetFileToPath(MainActivity.this, fileName, srcVideoPath);
+
+            SnapGenerator.generate(srcVideoPath, bitmapInfo, new SnapGenerator.OnFinishedListener() {
                 @Override
                 public void onFinished(final boolean success) {
                     MainActivity.this.runOnUiThread(new Runnable() {

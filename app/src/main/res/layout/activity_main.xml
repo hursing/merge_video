@@ -57,13 +57,6 @@
         android:text="rotate"
         android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/flip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="flip"
-        android:textSize="30sp" />
-
     <Button
         android:id="@+id/open_video"
         android:layout_width="wrap_content"
